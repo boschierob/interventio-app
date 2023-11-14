@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.8"
+      integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr"
+      crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Utiliser les données des employés et des clients -->
+    <h1>Bienvenue <%= employee.name %> !</h1>
+
+    <h2>Liste des clients :</h2>
+    <ul>
+        <% customers.forEach(customer => { %>
+            <li><%= customer.name %></li>
+        <% }); %>
+    </ul>
+
+</body>
+</html>

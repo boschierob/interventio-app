@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.8"
+      integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr"
+      crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Utiliser les données des employés et des clients -->
+    <h1>Bienvenue <%= employee.name %> !</h1>
+    <!-- Bouton pour la déconnexion -->
+    <a href="/logout">Déconnexion</a>
+
+    <h2>Liste des clients :</h2>
+    <ul>
+        <% customers.forEach(customer => { %>
+            <li><%= customer.name %></li>
+             <!-- Bouton pour ouvrir le formulaire d'édition -->
+             <button onclick="openEditForm('<%= customer.id %>')">Éditer</button>
+                
+             <!-- Formulaire d'édition (initiallement caché) -->
+             <div id="editForm<%= customer.id %>" style="display: none;">
+                 <form action="/edit-intervention" method="post">
+                     <label for="interventionDate">Date d'intervention :</label>
+                     <input type="date" id="interventionDate" name="interventionDate" required>
+                     <input type="hidden" name="customerId" value="<%= customer.id %>">
+                     <button type="submit">Enregistrer</button>
+                 </form>
+             </div>
+        <% }); %>
+    </ul>
+
+    <div class="container mx-auto my-8">
+        <!-- Tableau pour afficher les dates -->
+        <table class="min-w-full bg-white border border-gray-300 shadow">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="py-2 px-4 border-b">Client</th>
+                    <th class="py-2 px-4 border-b">Dates d'intervention</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% customers.forEach((customer, index) => { %>
+                    <tr class="<%= index % 2 === 0 ? 'bg-gray-100' : 'bg-white' %>">
+                        <td class="py-2 px-4 border-b text-center"><%= customer.name %></td>
+                        <td class="py-2 px-4 border-b text-center">
+                            <% if (customer.interventions && customer.interventions.length > 0) { %>
+                                <ul class="list-none pl-4">
+                                    <% customer.interventions.forEach((intervention) => { %>
+                                        <li><%= intervention.date %></li>
+                                    <% }); %>
+                                </ul>
+                            <% } else { %>
+                                Aucune date d'intervention
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fonction pour afficher le formulaire d'édition correspondant à un client
+        function openEditForm(customerId) {
+            document.getElementById('editForm' + customerId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.8"
+      integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr"
+      crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Utilisation de htmx pour changer la couleur de fond lors du clic -->
+    <div class="click" hx-trigger="click" hx-get="/changer-couleur" hx-swap="outerHTML" hx-get-params="{color: color}" hx-vars="color">
+        Cliquez ici
+    </div>
+
+    <!-- Utiliser les données des employés et des clients -->
+    <h2>Employés :</h2>
+    <ul>
+        <% data.employees.forEach(employee => { %>
+            <li><%= employee.name %></li>
+        <% }); %>
+    </ul>
+
+    <h2>Clients :</h2>
+    <ul>
+        <% data.customers.forEach(customer => { %>
+            <li><%= customer.name %></li>
+        <% }); %>
+    </ul>
+
+</body>
+</html>
