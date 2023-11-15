@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs').promises; // Ajout du module fs pour la manipulation de fichiers
 const uuid = require('uuid'); // Importez le module uuid
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const data = require('./data.js');
 
 
