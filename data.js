@@ -31,16 +31,7 @@ module.exports = {
       "id": 1,
       "name": "Pharmacie Saint Etienne",
       "userId": 1,
-      "interventions": [
-        {
-          "id": "5483a6e9-d418-4216-84ae-9e543d468a0f",
-          "date": "2023-11-01"
-        },
-        {
-          "id": "1630c970-a6fe-4fef-8f49-5e05fa4c5c3b",
-          "date": "2023-11-02"
-        }
-      ]
+      "interventions": []
     },
     {
       "id": 2,
@@ -66,16 +57,7 @@ module.exports = {
       "id": 6,
       "name": "Pollet",
       "userId": 2,
-      "interventions": [
-        {
-          "id": "e4efaa9d-5b2f-419a-bc90-c612224a7e52",
-          "date": "2023-11-25"
-        },
-        {
-          "id": "4f809e56-be8b-45bf-b262-7bff2ed8600c",
-          "date": "2023-11-29"
-        }
-      ]
+      "interventions": []
     },
     {
       "id": 7,

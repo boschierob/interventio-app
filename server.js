@@ -6,11 +6,16 @@ const bodyParser = require('body-parser');
 const fs = require('fs').promises; // Ajout du module fs pour la manipulation de fichiers
 const uuid = require('uuid'); // Importez le module uuid
 
+
+const app = express(); 
+
+
+
 const port = 3000;
 const data = require('./data.js');
 
 
-const app = express();
+
 
 
 // Utiliser EJS comme moteur de template
@@ -54,6 +59,8 @@ app.post('/login', (req, res) => {
     res.redirect('/login');
   }
 });
+
+
 
 // Route pour afficher la page principale
 app.get('/page', (req, res) => {
@@ -142,12 +149,11 @@ const updatedCustomers = data.customers.map(customer => {
 
 // Mettre à jour l'ensemble de l'objet data avant d'écrire dans le fichier
 const updatedData = { ...data, customers: updatedCustomers };
-console.log(updatedData);
+
 updateDataFile(updatedData);
-// Définir un cookie pour indiquer qu'une action de re-render est souhaitée côté client
-res.cookie('reRender', 'true');
+
+// Rediriger 
 res.redirect('/page');
- 
 });
 
 // Route pour la déconnexion
