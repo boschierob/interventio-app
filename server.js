@@ -6,16 +6,13 @@ const bodyParser = require('body-parser');
 const fs = require('fs').promises; // Ajout du module fs pour la manipulation de fichiers
 const uuid = require('uuid'); // Importez le module uuid
 
-<<<<<<< HEAD
+
 
 const app = express(); 
 
 
 
 const port = 3000;
-=======
-const port = process.env.PORT || 3000;
->>>>>>> d1390e65f806a630759b9444043af5f5bb9cbbe0
 const data = require('./data.js');
 
 
